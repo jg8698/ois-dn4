@@ -4,6 +4,14 @@ var queryUrl = baseUrl + '/query';
 var username = "ois.seminar";
 var password = "ois4fri";
 
+
+function enter() {
+    $("#homePage").hide();
+    $("#userPage").show();
+}
+
+
+
 function getSessionId() {
     var response = $.ajax({
         type: "POST",
