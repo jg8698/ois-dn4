@@ -35,5 +35,6 @@ html, body{
 }
 .NASLOV {
     text-align: center;
-    
+    font-size: 250%;
+    height:100%;
 }
