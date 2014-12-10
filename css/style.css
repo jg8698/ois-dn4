@@ -53,6 +53,12 @@ html, body{
 .Domov {
     height:100%;
     width:100%;
+    
+}
+
+.Kalkulator {
+    height:100%;
+    width:100%;
     display:none;
 }
 
