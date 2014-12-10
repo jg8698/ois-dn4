@@ -17,10 +17,9 @@ function getSessionId() {
     return response.responseJSON.sessionId;
 }
 function enter() {
-    $("#hp").hide();
-   $("#neki").show();
+    $("#container").hide();
 
-	alert();
+	
 }
 /*
 
