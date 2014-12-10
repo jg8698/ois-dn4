@@ -22,6 +22,7 @@ function enter() {
 }
 
 function izracunaj() {
+	
 	var leto = 2014;
 	var starostZacetka = $("#zacetek").val();
 	var pauze = $("#premori").val();
@@ -32,6 +33,8 @@ function izracunaj() {
 	var steviloUseh = steviloLetKajenja * 365 * naDan;
 	var porabljeniDnevi = steviloUseh * 11 / 60;
 	$("#izgubljeniDnevi").val(porabljeniDnevi);
+	$("#zacetek").val("afsfasfas");
+	return;
 }
 /*
 
