@@ -20,20 +20,32 @@ html, body{
     overflow: auto;
 }
 
+.homePage1 {
+    width:100%;
+    height:100%;
+    overflow: auto;
+}
+
 .page-header {
     text-align: center;
 }
 #container {
     height:100%;
     width:100%;
+    display:none;
 }
 
 #plac {
-    height: 15%;
+    height: 20%;
+}
+
+#slika {
+  height: 60%;
+  background:url('../pictures/sayNO.png') no-repeat center center;
+    
 }
 .be {
-    background:url('../pictures/smoking.png') no-repeat center center;
+   
     height:100%;
     width:100%;
-    display:none;
 }    
