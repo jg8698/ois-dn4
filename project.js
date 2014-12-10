@@ -40,13 +40,12 @@ function zanimivosti() {
 function izracunaj() {
 	
 
-	var starostZacetka = $("#zacetek").val();
+	var	starostZacetka = $("#zacetek").val();
 	var pauze = $("#premori").val();
-	$("#premori").val(pauze+1);
 	var naDan = $("#povprecje").val();
 	var rojstvo = $("#kreirajDatumRojstva").val();
 	
-	var steviloLetKajenja = 2014 - (rojstvo + starostZacetka) - pauze;
+	var steviloLetKajenja = 2014 - rojstvo + starostZacetka - pauze;
 	$("#kreirajIme").val(steviloLetKajenja);
 
 
