@@ -42,6 +42,7 @@ function izracunaj() {
 
 	var starostZacetka = $("#zacetek").val();
 	var pauze = $("#premori").val();
+	$("#premori").val(pauze+1);
 	var naDan = $("#povprecje").val();
 	var rojstvo = $("#kreirajDatumRojstva").val();
 	
