@@ -23,17 +23,17 @@ function enter() {
 
 function izracunaj() {
 	
-	var leto = 2014;
+
 	var starostZacetka = $("#zacetek").val();
 	var pauze = $("#premori").val();
 	var naDan = $("#povprecje").val();
 	var rojstvo = $("#kreirajDatumRojstva").val();
 	
-	var steviloLetKajenja = leto - (rojstvo + starostZacetka) - pauze;
+	var steviloLetKajenja = 2014 - (rojstvo + starostZacetka) - pauze;
 	var steviloUseh = steviloLetKajenja * 365 * naDan;
 	var porabljeniDnevi = steviloUseh * 11 / 60;
 	$("#izgubljeniDnevi").val(porabljeniDnevi);
-	$("#zacetek").val("afsfasfas");
+
 	return;
 }
 /*
