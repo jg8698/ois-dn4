@@ -23,3 +23,13 @@ html, body{
 .page-header {
     text-align: center;
 }
+#container {
+    height:100%;
+    width:100%;
+}
+#neki {
+    height:50%;
+    width:50%;
+    display:none;
+    background-color:black;
+}
