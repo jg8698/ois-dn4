@@ -21,6 +21,22 @@ function enter() {
     $("#container").show();
 }
 
+function domov() {
+    $("#Kalkulator").hide();
+    $("#Zanimivosti").hide();
+    $("#Domov").show();
+}
+function calc() {
+    $("#Zanimivosti").hide();
+    $("#Domov").hide();
+    $("#Kalkulator").show();
+}
+function zanimivosti() {
+    $("#Kalkulator").hide();
+    $("#Domov").hide();
+    $("#Zanimivosti").show();
+}
+
 function izracunaj() {
 	
 
