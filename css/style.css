@@ -13,15 +13,10 @@ html, body{
     cursor: default;
 }
 
-.homePage {
+.row {
     width:100%;
     height:100%;
-    overflow: auto;
+     background:url('../pictures/smoking.png') no-repeat center center;
+    
 }
 
-.zgoraj {
-    height:30%;
-}
-.zgoraj {
-    height:30%;
-}
