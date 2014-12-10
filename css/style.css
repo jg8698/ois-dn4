@@ -39,6 +39,11 @@ html, body{
     height: 10%;
 }
 
+.row {
+    height: 25px;
+    
+}
+
 #slika {
   height: 60%;
   background:url('../pictures/sayNO.png') no-repeat center center;
