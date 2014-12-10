@@ -122,11 +122,11 @@ html, body{
 
 .btn1 {
   background: #e1e8ed;
-  background-image: -webkit-linear-gradient(top, #e1e8ed, #141617);
-  background-image: -moz-linear-gradient(top, #e1e8ed, #141617);
-  background-image: -ms-linear-gradient(top, #e1e8ed, #141617);
-  background-image: -o-linear-gradient(top, #e1e8ed, #141617);
-  background-image: linear-gradient(to bottom, #e1e8ed, #141617);
+  background-image: -webkit-linear-gradient(top, #000000, #88898a);
+  background-image: -moz-linear-gradient(top, #000000, #88898a);
+  background-image: -ms-linear-gradient(top, #000000, #88898a);
+  background-image: -o-linear-gradient(top, #000000, #88898a);
+  background-image: linear-gradient(to bottom, #000000, #88898a);
   -webkit-border-radius: 28;
   -moz-border-radius: 28;
   border-radius: 28px;
