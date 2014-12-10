@@ -6,7 +6,7 @@ var password = "ois4fri";
 
 
 function enter() {
-    $("#homePage").hide();
+    $("#hp").hide();
    // $("#userPage").show();
 }
 
