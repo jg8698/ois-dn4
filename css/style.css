@@ -32,8 +32,9 @@ html, body{
     height: 15%;
 }
 .be {
-    height:50%;
-    width:50%;
+     background:url('../pictures/smoking.png') no-repeat center center;
+    height:100%;
+    width:100%;
     display:none;
     background-color:black;
 }
