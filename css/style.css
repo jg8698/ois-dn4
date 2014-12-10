@@ -16,7 +16,7 @@ html, body{
 .homePage {
     width:100%;
     height:100%;
-     background:url('../pictures/o_cigarette.jpg') no-repeat center center;
+     background:url('../pictures/blackSmoke.jpg') no-repeat center center;
     overflow: auto;
 }
 
