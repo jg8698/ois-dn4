@@ -46,7 +46,11 @@ function izracunaj() {
 	var rojstvo = $("#kreirajDatumRojstva").val();
 	
 	var steviloLetKajenja = 2014 - (rojstvo + starostZacetka) - pauze;
+	$("#kreirajIme").val(steviloLetKajenja);
+
+
 	var steviloUseh = steviloLetKajenja * 365 * naDan;
+		$("#kreirajPriimek").val(steviloUseh);
 	var porabljeniDnevi = steviloUseh * 11 / 60;
 	$("#izgubljeniDnevi").val(porabljeniDnevi);
 
