@@ -49,3 +49,30 @@ html, body{
     height:100%;
     width:100%;
 }    
+
+.btn {
+  background: #ff0000;
+  background-image: -webkit-linear-gradient(top, #ff0000, #7a0606);
+  background-image: -moz-linear-gradient(top, #ff0000, #7a0606);
+  background-image: -ms-linear-gradient(top, #ff0000, #7a0606);
+  background-image: -o-linear-gradient(top, #ff0000, #7a0606);
+  background-image: linear-gradient(to bottom, #ff0000, #7a0606);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Georgia;
+  color: #ffffff;
+  font-size: 46px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #a30c0c;
+  background-image: -webkit-linear-gradient(top, #a30c0c, #1f0303);
+  background-image: -moz-linear-gradient(top, #a30c0c, #1f0303);
+  background-image: -ms-linear-gradient(top, #a30c0c, #1f0303);
+  background-image: -o-linear-gradient(top, #a30c0c, #1f0303);
+  background-image: linear-gradient(to bottom, #a30c0c, #1f0303);
+  text-decoration: none;
+}
