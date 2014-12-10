@@ -51,7 +51,7 @@ function izracunaj() {
 
 	var steviloUseh = steviloLetKajenja * 365 * naDan;
 		$("#kreirajPriimek").val(steviloUseh);
-	var porabljeniDnevi = steviloUseh * 11 / 60;
+	var porabljeniDnevi = steviloUseh * 11 / 60/60;
 	$("#izgubljeniDnevi").val(porabljeniDnevi);
 
 	return;
