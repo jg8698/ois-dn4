@@ -26,7 +26,7 @@ html, body{
     overflow: auto;
 }
 
-.prostorZaGumbe {
+#prostorZaGumbe {
     height:20%;
     float:auto;
 }
