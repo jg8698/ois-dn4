@@ -18,7 +18,7 @@ function getSessionId() {
 }
 function enter() {
     $("#container").hide();
-
+	$("#neki").show();
 	
 }
 /*
