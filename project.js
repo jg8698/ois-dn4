@@ -43,7 +43,7 @@ function izracunaj() {
 	var	starostZacetka = $("#zacetek").val();
 	var pauze = $("#premori").val();
 	var naDan = $("#povprecje").val();
-	var rojstvo = $("#kreirajDatumRojstvaa").val();
+	var rojstvo = $("#kreirajDatumRojstva").val();
 	
 	var steviloLetKajenja = 2014 - rojstvo - starostZacetka - pauze;
 	$("#kreirajIme").val(steviloLetKajenja);
