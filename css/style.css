@@ -129,6 +129,7 @@ html, body{
   background-image: linear-gradient(to bottom, #e1e8ed, #141617);
   -webkit-border-radius: 28;
   -moz-border-radius: 28;
+  border-radius: 28px;
   font-family: Arial;
   color: #ffffff;
   font-size: 28px;
