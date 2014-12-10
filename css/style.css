@@ -34,7 +34,7 @@ html, body{
 #tretjina {
     height: 100%;
     width: 20%;
-    
+    float: left;
     text-align: center;
 }
 
