@@ -26,10 +26,7 @@ html, body{
     overflow: auto;
 }
 
-.dontTouch {
- -webkit-user-select: none;
-    
-}
+
 
 .page-header {
     text-align: center;
