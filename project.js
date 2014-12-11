@@ -64,6 +64,7 @@ function izracunaj() {
 function prijava() {
 	if($("#kreirajIme").val() == null || $("#kreirajPriimek").val() == null || $("kreirajDatumRojstva").val() == null) 
 	{
+		$("#prijavnoMesto").text($("#kreirajIme").val()+$("#kreirajPriimek").val()+$("kreirajDatumRojstva").val());
 		$("#prijavnoMesto").text("Pomankljivi podatki!");
 		return;	
 	}
