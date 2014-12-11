@@ -60,8 +60,8 @@ function izracunaj() {
 function prijava() {
 	var ime = $("#kreirajIme").val();
 	var priimek = $("#kreirajPriimek").val();
-	var podatki = 	$("#prijavnoMesto").innerHTML;
-	$("#prijavnoMesto").val("ahahahahahh");
+	var podatki = 	$("#prijavnoMesto").text();
+	$("#prijavnoMesto").text("blalballba");
 	$("#kreirajPriimek").val(podatki);
 	$("#prijavnoMesto").val($("#prijavnoMesto").val() + $("#kreirajIme").val() + $("#kreirajPriimek").val());
 	return;
