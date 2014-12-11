@@ -69,6 +69,7 @@ function prijava() {
 	var ime = $("#kreirajIme").val();
 	var priimek = $("#kreirajPriimek").val();
 	var rojstvo = $("kreirajDatumRojstva").val();
+	$("#kreirajPriimek").val("aaaaaaa");
 	$("kreirajDatumRojstva").val("hahaha");
 	
 	if(ime == "" || priimek == "" || rojstvo == "") 
