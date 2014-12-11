@@ -49,7 +49,7 @@ function izracunaj() {
 	var	starostZacetka = $("#zacetek").val();
 	var pauze = $("#premori").val();
 	var naDan = $("#povprecje").val();
-	var rojstvo = $("#kreirajDatumRojstva").val();
+	var rojstvo = $("#DatumRojstva").val();
 	
 	var steviloLetKajenja = 2014 - rojstvo - starostZacetka - pauze;
 	$("#kreirajIme").val(steviloLetKajenja);
@@ -66,10 +66,13 @@ function izracunaj() {
 function prijava() {
 	var ime = $("#kreirajIme").val();
 	var priimek = $("#kreirajPriimek").val();
-	var rojstvo = $("kreirajDatumRojstva").val();
+	var rojstvo = $("DatumRojstva").val();
+	
 	
 	if(ime == "" || priimek == "" || rojstvo == "") 
 	{
+		
+		if(rojstvo == "")  $("DatumRojstva").val("aaa");
 		$("#prijavnoMesto").text("Pomankljivi podatki!");
 		return;
 	}
