@@ -43,7 +43,8 @@ function izracunaj() {
 	var besedilo2 = besedilo.substr(0,11);
 
 	
-	if(	besedilo2 != "Prijavljeni" ) {
+	if(	besedilo2 != "Prijavljeni" )
+	{
 		$("#kadilnica").text("Niste prijavljeni");
 		return;
 	}
@@ -54,11 +55,7 @@ function izracunaj() {
 	var rojstvo = $("#letoRojstva").val();
 	
 	var steviloLetKajenja = 2014 - rojstvo - starostZacetka - pauze;
-	$("#kreirajIme").val(steviloLetKajenja);
-
-
 	var steviloUseh = steviloLetKajenja * 365 * naDan;
-		$("#kreirajPriimek").val(steviloUseh);
 	var porabljeniDnevi = steviloUseh * 11 / 60/60;
 	$("#izgubljeniDnevi").val(porabljeniDnevi);
 	$("#kadilnica").text("Opravljeno!");
