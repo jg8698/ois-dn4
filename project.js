@@ -61,10 +61,16 @@ function izracunaj() {
 }
 
 function prijava() {
+	if($("#kreirajIme").val() == null || $("#kreirajPriimek").val() == null || $("kreirajDatumRojstva").val() == null) 
+	{
+		$("#prijavnoMesto").text("Pomankljivi podatki!");
+		return;	
+	}
+	
 	var ime = $("#kreirajIme").val();
 	var priimek = $("#kreirajPriimek").val();
 	$("#prijavnoMesto").text("Prijavljeni ste kot: " + $("#kreirajIme").val() + $("#kreirajPriimek").val());
-	return;
+	
 }
 /*
 
