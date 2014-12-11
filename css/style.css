@@ -94,15 +94,14 @@ html, body{
 }
 
 .row {
-    height: 18px;
+    height: 22px;
     
 }
 
 .row1 {
-    margin-top: 2%;
+    margin-top: 5%;
     height: 25px;
     text-align:center;
-    
 }
 
 #slika {
