@@ -35,6 +35,11 @@ html, body{
     float:auto;
 }
 
+.PlacZagumb {
+    text-align:center;
+    
+}
+
 #tretjina {
     height: 100%;
     width: 33%;
@@ -134,34 +139,6 @@ html, body{
   background-image: linear-gradient(to bottom, #a30c0c, #1f0303);
   text-decoration: none;
 }
-
-.btn1 {
-  background: #000000;
-  background-image: -webkit-linear-gradient(top, #000000, #88898a);
-  background-image: -moz-linear-gradient(top, #000000, #88898a);
-  background-image: -ms-linear-gradient(top, #000000, #88898a);
-  background-image: -o-linear-gradient(top, #000000, #88898a);
-  background-image: linear-gradient(to bottom, #000000, #88898a);
-  -webkit-border-radius: 28;
-  -moz-border-radius: 28;
-  border-radius: 28px;
-  font-family: Arial;
-  color: #ffffff;
-  font-size: 28px;
-  padding: 10px 40px 10px 40px;
-  text-decoration: none;
-}
-
-.btn1:hover {
-  background: #0e0f0f;
-  background-image: -webkit-linear-gradient(top, #0e0f0f, #bec2c4);
-  background-image: -moz-linear-gradient(top, #0e0f0f, #bec2c4);
-  background-image: -ms-linear-gradient(top, #0e0f0f, #bec2c4);
-  background-image: -o-linear-gradient(top, #0e0f0f, #bec2c4);
-  background-image: linear-gradient(to bottom, #0e0f0f, #bec2c4);
-  text-decoration: none;
-}
-
 
 .button1 {
    border-top: 1px solid #080401;
