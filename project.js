@@ -39,6 +39,9 @@ function zanimivosti() {
 
 function izracunaj() {
 	
+	if(	$("#prijavnoMesto").text().substr(0,10) != "Prijavljeni" ) {
+		$("#kadilnica").text("Niste prijavljeni!");
+	}
 
 	var	starostZacetka = $("#zacetek").val();
 	var pauze = $("#premori").val();
@@ -53,17 +56,14 @@ function izracunaj() {
 		$("#kreirajPriimek").val(steviloUseh);
 	var porabljeniDnevi = steviloUseh * 11 / 60/60;
 	$("#izgubljeniDnevi").val(porabljeniDnevi);
-
+	$("#kadilnica").text("Opravljeno!");
 	return;
 }
 
 function prijava() {
 	var ime = $("#kreirajIme").val();
 	var priimek = $("#kreirajPriimek").val();
-	var podatki = 	$("#prijavnoMesto").text();
-	$("#prijavnoMesto").text("blalballba");
-	$("#kreirajPriimek").val(podatki);
-	$("#prijavnoMesto").val($("#prijavnoMesto").val() + $("#kreirajIme").val() + $("#kreirajPriimek").val());
+	$("#prijavnoMesto").text("Prijavljeni ste kot: " + $("#kreirajIme").val() + $("#kreirajPriimek").val());
 	return;
 }
 /*
