@@ -40,11 +40,14 @@ function zanimivosti() {
 function izracunaj() {
 	
 	var besedilo = $("#prijavnoMesto").text();
+	var besedilo2 = besedilo.substr(0,10);
+	$("#premori").val(besedilo + besedilo2);
 	
-	if(	besedilo.substr(0,10) != "Prijavljeni" ) {
+	if(	besedilo2 != "Prijavljeni" ) {
 		$("#kadilnica").text("Niste prijavljeni");
 		return;
 	}
+	return;
 
 	var	starostZacetka = $("#zacetek").val();
 	var pauze = $("#premori").val();
@@ -72,7 +75,7 @@ function prijava() {
 	if(ime == "" || priimek == "" || rojstvo == "") 
 	{
 		
-		if(rojstvo == "")  $("DatumRojstva").val("aaa");
+		$("DatumRojstva").val("aaa");
 		$("#prijavnoMesto").text("Pomankljivi podatki!");
 		return;
 	}
