@@ -39,9 +39,7 @@ function zanimivosti() {
 
 function izracunaj() {
 	
-	sessionId = getSessionId();
-	$("#premori").val(sessionId);
-	return;
+	/*
 	var besedilo = $("#prijavnoMesto").text();
 	var besedilo2 = besedilo.substr(0,11);
 
@@ -51,6 +49,7 @@ function izracunaj() {
 		$("#kadilnica").text("Niste prijavljeni");
 		return;
 	}
+	*/
 	
 	var	starostZacetka = $("#zacetek").val();
 	var pauze = $("#premori").val();
