@@ -1,85 +1,157 @@
+
 <!DOCTYPE html>
-<meta charset="utf-8">
-<style>
-
-body {
-  font: 10px sans-serif;
-}
-
-.bar rect {
-  fill: steelblue;
-  shape-rendering: crispEdges;
-}
-
-.bar text {
-  fill: #fff;
-}
-
-.axis path, .axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
-
-</style>
-<body>
-<script src="http://d3js.org/d3.v3.min.js"></script>
-<script>
-
-// Generate a Bates distribution of 10 random variables.
-var values = d3.range(1000).map(d3.random.bates(10));
-
-// A formatter for counts.
-var formatCount = d3.format(",.0f");
-
-var margin = {top: 10, right: 30, bottom: 30, left: 30},
-    width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
-
-var x = d3.scale.linear()
-    .domain([0, 1])
-    .range([0, width]);
-
-// Generate a histogram using twenty uniformly-spaced bins.
-var data = d3.layout.histogram()
-    .bins(x.ticks(20))
-    (values);
-
-var y = d3.scale.linear()
-    .domain([0, d3.max(data, function(d) { return d.y; })])
-    .range([height, 0]);
-
-var xAxis = d3.svg.axis()
-    .scale(x)
-    .orient("bottom");
-
-var svg = d3.select("body").append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-var bar = svg.selectAll(".bar")
-    .data(data)
-  .enter().append("g")
-    .attr("class", "bar")
-    .attr("transform", function(d) { return "translate(" + x(d.x) + "," + y(d.y) + ")"; });
-
-bar.append("rect")
-    .attr("x", 1)
-    .attr("width", x(data[0].dx) - 1)
-    .attr("height", function(d) { return height - y(d.y); });
-
-bar.append("text")
-    .attr("dy", ".75em")
-    .attr("y", 6)
-    .attr("x", x(data[0].dx) / 2)
-    .attr("text-anchor", "middle")
-    .text(function(d) { return formatCount(d.y); });
-
-svg.append("g")
-    .attr("class", "x axis")
-    .attr("transform", "translate(0," + height + ")")
-    .call(xAxis);
-
-</script>
+<html lang="en">
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<title>Say NO to smoking</title>
+	    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+	    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+	    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	   	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	 	<script src="project.js"></script>
+	</head>
+	<body>
+		<div id="neki" class="be">
+			<div id="hp" class="homePage1">
+				<div id="plac" class="col-lg-12 col-md-12 col-sm-12"></div>
+				<div class="col-lg-3 col-md-3 col-sm-3"></div>
+				<div id="slika" class="col-lg-6 col-md-6 col-sm-6"></div>
+				<div class="col-lg-3 col-md-3 col-sm-3"></div>
+				<div class="col-lg-5 col-md-5 col-sm-5"></div>
+				<div class="col-lg-2 col-md-2 col-sm-2">
+					<button type="button" class="btn" onclick="enter()">Vstopi</button>
+				</div>
+			</div>
+		</div>
+		
+		<div id="container">
+			<div id="hp" class="homePage">
+				<div id="plac" class="col-lg-12 col-md-12 col-sm-12"></div>
+				<div id="prostorZaGumbe" class="col-lg-12 col-md-12 col-sm-12">
+	
+					<div id="tretjina"><button  class="button1" onclick="domov()">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDomov&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button></div>
+			
+					<div id="tretjina"><button  class="button1" onclick="calc()">Kalkulator življenja</button></div>
+				
+					<div id="tretjina"><button  class="button1" onclick="zanimivosti()">&nbsp&nbsp&nbsp&nbsp&nbspZanimivosti&nbsp&nbsp&nbsp&nbsp&nbsp</button></div>
+		
+				</div>
+				<div id="plac2" class="col-lg-12 col-md-12 col-sm-12"></div>
+				
+					<div id="Domov" class="Domov">
+						<div class="col-lg-4 col-md-4 col-sm-4"></div>
+						<div class="col-lg-4 col-md-4 col-sm-4">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<div class="row">
+										<div class="col-lg-8 col-md-8 col-sm-8"><b>Izberi</div>
+										<div class="col-lg-4 col-md-4 col-sm-4"><select class="form-control input-sm" id="preberiPredlogoBolnika"><option value=""></option><option value="Pujsa,Pepa,1938-10-30T14:58">Pujsa Pepa</option></select></div>
+									</div>
+								</div>
+								<div class="panel-body">
+									<span class="label label-default">Ime</span><input id="kreirajIme" type="text" class="form-control input-mini" >
+									<span class="label label-default">Priimek</span><input id="kreirajPriimek" type="text" class="form-control" >
+									<span class="label label-default">Datum rojstva</span><input id="kreirajDatumRojstva" type="text" class="form-control" >
+									<span class="label label-default">EHR ID</span><input id="preberiEHRid" type="text" class="form-control input-mini" >
+									<div class="PlacZagumb"><button type="button" class="gumb" onclick="kreirajEHRzaBolnika()" >Prijava</button></div>
+									
+									<div class="row1">
+										<div id="prijavnoMesto" class="col-lg-12 col-md-12 col-sm-12"><b>Dobrodošli!</div>
+									</div>
+							  	</div>
+							</div>
+						</div>
+					</div>	
+						
+					
+					
+					<div id="Kalkulator" class="Kalkulator">
+						<div class="col-lg-4 col-md-4 col-sm-4"></div>
+						<div class="col-lg-4 col-md-4 col-sm-4">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<div class="row">
+										<div class="col-lg-8 col-md-8 col-sm-8"><b>Podatki o kajenju</div>
+									</div>
+								</div>
+								<div class="panel-body">
+									<span class="label label-default">Začetek kajenja (starost)</span><input id="zacetek" type="text" class="form-control input-mini" >
+									<span class="label label-default">Povrečno število pokajenih cigaret (dnevno)</span><input id="povprecje" type="text" class="form-control" >
+									<span class="label label-default">Premori pri kajenju (v letih)</span><input id="premori" type="text" class="form-control">
+									<span class="label label-default">Izgubljena življenjska doba (v dneh)</span><input id="izgubljeniDnevi" type="text" class="form-control" readonly>
+									<div class="PlacZagumb"><button type="button" class="gumb" onclick="izracunaj()">Izračunaj</button></div>
+									<div class="row1">
+										<div id="kadilnica" class="col-lg-12 col-md-12 col-sm-12"><b>Izračunajte izgubljene dneve!</div>
+									</div>
+							  	</div>
+							</div>
+						</div>
+					</div>
+					
+					<div id="Zanimivosti" class="Zanimivosti">
+						<script src="http://d3js.org/d3.v3.min.js"></script>
+							<script>
+							
+							// Generate a Bates distribution of 10 random variables.
+							var values = d3.range(1000).map(d3.random.bates(10));
+							
+							// A formatter for counts.
+							var formatCount = d3.format(",.0f");
+							
+							var margin = {top: 10, right: 30, bottom: 30, left: 30},
+							    width = 960 - margin.left - margin.right,
+							    height = 500 - margin.top - margin.bottom;
+							
+							var x = d3.scale.linear()
+							    .domain([0, 1])
+							    .range([0, width]);
+							
+							// Generate a histogram using twenty uniformly-spaced bins.
+							var data = d3.layout.histogram()
+							    .bins(x.ticks(20))
+							    (values);
+							
+							var y = d3.scale.linear()
+							    .domain([0, d3.max(data, function(d) { return d.y; })])
+							    .range([height, 0]);
+							
+							var xAxis = d3.svg.axis()
+							    .scale(x)
+							    .orient("bottom");
+							
+							var svg = d3.select("body").append("svg")
+							    .attr("width", width + margin.left + margin.right)
+							    .attr("height", height + margin.top + margin.bottom)
+							  .append("g")
+							    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+							
+							var bar = svg.selectAll(".bar")
+							    .data(data)
+							  .enter().append("g")
+							    .attr("class", "bar")
+							    .attr("transform", function(d) { return "translate(" + x(d.x) + "," + y(d.y) + ")"; });
+							
+							bar.append("rect")
+							    .attr("x", 1)
+							    .attr("width", x(data[0].dx) - 1)
+							    .attr("height", function(d) { return height - y(d.y); });
+							
+							bar.append("text")
+							    .attr("dy", ".75em")
+							    .attr("y", 6)
+							    .attr("x", x(data[0].dx) / 2)
+							    .attr("text-anchor", "middle")
+							    .text(function(d) { return formatCount(d.y); });
+							
+							svg.append("g")
+							    .attr("class", "x axis")
+							    .attr("transform", "translate(0," + height + ")")
+							    .call(xAxis);
+							
+							</script>
+					</div>
+				
+			</div>
+		</div>
+	</body>
+</html>
