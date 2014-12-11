@@ -68,14 +68,13 @@ function prijava() {
 	
 	if(ime === null || priimek === null || rojstvo === null) 
 	{
-		$("#prijavnoMesto").text($("#kreirajIme").val()+$("#kreirajPriimek").val()+$("kreirajDatumRojstva").val());
 		$("#prijavnoMesto").text("Pomankljivi podatki!");
-		
+		return;
 	}
 	
 	var ime = $("#kreirajIme").val();
 	var priimek = $("#kreirajPriimek").val();
-	$("#prijavnoMesto").text("Prijavljeni ste kot: " + $("#kreirajIme").val() + $("#kreirajPriimek").val());
+	$("#prijavnoMesto").text("Prijavljeni ste kot: " + $("#kreirajIme").val() +" "+ $("#kreirajPriimek").val());
 	
 }
 /*
