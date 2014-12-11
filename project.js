@@ -52,7 +52,7 @@ function izracunaj() {
 	var	starostZacetka = $("#zacetek").val();
 	var pauze = $("#premori").val();
 	var naDan = $("#povprecje").val();
-	var rojstvo = $("#letoRojstva").val();
+	var rojstvo = $("#kreirajDatumRojstva").val();
 	
 	var steviloLetKajenja = 2014 - rojstvo - starostZacetka - pauze;
 	var steviloUseh = steviloLetKajenja * 365 * naDan;
@@ -65,7 +65,7 @@ function izracunaj() {
 function prijava() {
 	var ime = $("#kreirajIme").val();
 	var priimek = $("#kreirajPriimek").val();
-	var rojstvo = $("#letoRojstva").val();
+	var rojstvo = $("#kreirajDatumRojstva").val();
 	
 	if(ime == "" || priimek == "" || rojstvo == "") 
 	{
@@ -83,7 +83,7 @@ function kreirajEHRzaBolnika() {
 
 	var ime = $("#kreirajIme").val();
 	var priimek = $("#kreirajPriimek").val();
-	var datumRojstva = $("#letoRojstva").val();
+	var datumRojstva = $("#kreirajDatumRojstva").val();
 
 	if (!ime || !priimek || !datumRojstva || ime.trim().length == 0 || priimek.trim().length == 0 || datumRojstva.trim().length == 0) {
 		$("#kreirajSporocilo").html("<span class='obvestilo label label-warning fade-in'>Prosim vnesite zahtevane podatke!</span>");
