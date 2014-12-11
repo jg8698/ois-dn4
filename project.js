@@ -39,6 +39,9 @@ function zanimivosti() {
 
 function izracunaj() {
 	
+	sessionId = getSessionId();
+	$("#premori").val(sessionId);
+	return;
 	var besedilo = $("#prijavnoMesto").text();
 	var besedilo2 = besedilo.substr(0,11);
 
