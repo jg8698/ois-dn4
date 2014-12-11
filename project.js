@@ -40,7 +40,8 @@ function zanimivosti() {
 function izracunaj() {
 	
 	if(	$("#prijavnoMesto").text().substr(0,10) != "Prijavljeni" ) {
-		$("#kadilnica").text("Niste prijavljeni!");
+		$("#kadilnica").text("Niste prijavljeni");
+		return;
 	}
 
 	var	starostZacetka = $("#zacetek").val();
