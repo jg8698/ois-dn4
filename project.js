@@ -58,7 +58,9 @@ function izracunaj() {
 }
 
 function prijava() {
-	
+	$("#kreirajIme").val("bla");
+	var priimek = $("#kreirajPriimek").val();
+	$("#kreirajDatumRojstva").val(priimek);
 	$("#prijavnoMesto").val($("#prijavnoMesto").val() + $("#kreirajIme").val() + $("#kreirajPriimek").val());
 	return;
 }
