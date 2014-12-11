@@ -97,6 +97,12 @@ html, body{
     
 }
 
+.row1 {
+    height: 25px;
+    text-align:center;
+    
+}
+
 #slika {
   height: 60%;
   background:url('../pictures/sayNO.png') no-repeat center center;
