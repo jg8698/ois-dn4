@@ -56,6 +56,12 @@ function izracunaj() {
 
 	return;
 }
+
+function prijava() {
+	
+	$("#prijavnoMesto").val($("#prijavnoMesto").val() + $("#kreirajIme").val() + $("#kreirajPriimek").val());
+	return;
+}
 /*
 
 function kreirajEHRzaBolnika() {
