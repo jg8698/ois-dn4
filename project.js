@@ -62,11 +62,15 @@ function izracunaj() {
 }
 
 function prijava() {
-	if($("#kreirajIme").val() == null || $("#kreirajPriimek").val() == null || $("kreirajDatumRojstva").val() == null) 
+	var ime = $("#kreirajIme").val();
+	var priimek = $("#kreirajPriimek").val();
+	var rojstvo = $("kreirajDatumRojstva").val();
+	
+	if(ime === null || priimek === null || rojstvo === null) 
 	{
 		$("#prijavnoMesto").text($("#kreirajIme").val()+$("#kreirajPriimek").val()+$("kreirajDatumRojstva").val());
 		$("#prijavnoMesto").text("Pomankljivi podatki!");
-		return;	
+		
 	}
 	
 	var ime = $("#kreirajIme").val();
