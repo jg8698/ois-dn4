@@ -76,7 +76,7 @@ function prijava() {
 	$("#prijavnoMesto").text("Prijavljeni ste kot: " + $("#kreirajIme").val() +" "+ $("#kreirajPriimek").val());
 	
 }
-/*
+
 
 function kreirajEHRzaBolnika() {
 	sessionId = getSessionId();
@@ -342,4 +342,4 @@ $(document).ready(function() {
 		$("#rezultatMeritveVitalnihZnakov").html("");
 		$("#meritveVitalnihZnakovEHRid").val($(this).val());
 	});
-});*/
+});
