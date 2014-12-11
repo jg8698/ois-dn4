@@ -83,7 +83,7 @@ function kreirajEHRzaBolnika() {
 
 	var ime = $("#kreirajIme").val();
 	var priimek = $("#kreirajPriimek").val();
-	var datumRojstva = $("#kreirajDatumRojstva").val();
+	var datumRojstva = $("#letoRojstva").val();
 
 	if (!ime || !priimek || !datumRojstva || ime.trim().length == 0 || priimek.trim().length == 0 || datumRojstva.trim().length == 0) {
 		$("#kreirajSporocilo").html("<span class='obvestilo label label-warning fade-in'>Prosim vnesite zahtevane podatke!</span>");
@@ -322,7 +322,7 @@ $(document).ready(function() {
 		var podatki = $(this).val().split(",");
 		$("#kreirajIme").val(podatki[0]);
 		$("#kreirajPriimek").val(podatki[1]);
-		$("#kreirajDatumRojstva").val(podatki[2]);
+		$("#datumRojstva").val(podatki[2]);
 	});
 	$('#preberiObstojeciVitalniZnak').change(function() {
 		$("#dodajMeritveVitalnihZnakovSporocilo").html("");
