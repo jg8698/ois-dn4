@@ -38,6 +38,12 @@ html, body{
     text-align: center;
 }
 
+#graf {
+    height: 50%;
+    overflow: auto;
+    
+}
+
 
 
 
