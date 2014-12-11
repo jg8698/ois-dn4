@@ -39,7 +39,9 @@ function zanimivosti() {
 
 function izracunaj() {
 	
-	if(	$("#prijavnoMesto").text().substr(0,10) != "Prijavljeni" ) {
+	var besedilo = $("#prijavnoMesto").text();
+	
+	if(	besedilo.substr(0,10) != "Prijavljeni" ) {
 		$("#kadilnica").text("Niste prijavljeni");
 		return;
 	}
@@ -66,7 +68,7 @@ function prijava() {
 	var priimek = $("#kreirajPriimek").val();
 	var rojstvo = $("kreirajDatumRojstva").val();
 	
-	if(ime === null || priimek === null || rojstvo === null) 
+	if(ime == "" || priimek == "" || rojstvo == "") 
 	{
 		$("#prijavnoMesto").text("Pomankljivi podatki!");
 		return;
