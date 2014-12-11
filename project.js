@@ -68,9 +68,7 @@ function izracunaj() {
 function prijava() {
 	var ime = $("#kreirajIme").val();
 	var priimek = $("#kreirajPriimek").val();
-	var rojstvo = $("letoRojstva").val();
-	$("#kreirajPriimek").val("aaaaaaa");
-	$("letoRojstva").val("hahaha");
+	var rojstvo = $("#letoRojstva").val();
 	
 	if(ime == "" || priimek == "" || rojstvo == "") 
 	{
