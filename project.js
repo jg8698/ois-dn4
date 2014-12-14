@@ -58,7 +58,7 @@ function izracunaj() {
 	
 	var steviloLetKajenja = 2014 - rojstvo - starostZacetka - pauze;
 	var steviloUseh = steviloLetKajenja * 365 * naDan;
-	var porabljeniDnevi = steviloUseh * 11 / 60/60;
+	var porabljeniDnevi = steviloUseh * 11 / 60/24;
 	$("#izgubljeniDnevi").val(porabljeniDnevi);
 	$("#kadilnica").text("Opravljeno!");
 	return;
