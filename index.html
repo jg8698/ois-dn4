@@ -8,7 +8,7 @@
 	    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
 	    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 	   	<link rel="stylesheet" type="text/css" href="css/style.css" />
-	 	<script src="project.js"></script>
+	 	<script src="project.js"></script>	 
 	</head>
 	<body>
 		<div id="neki" class="be">
@@ -31,11 +31,11 @@
 	
 					<div id="petina"><button  class="button1" onclick="domov()">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDomov&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button></div>
 					
-					<div id="petina"><button  class="button1" onclick="calc()">&nbsp&nbsp&nbspOsnovni podatki&nbsp&nbsp&nbsp</button></div>
+					<div id="petina"><button  class="button1" onclick="osnovno()">&nbsp&nbsp&nbspOsnovni podatki&nbsp&nbsp&nbsp</button></div>
 					
 					<div id="petina"><button  class="button1" onclick="calc()">Kalkulator življenja</button></div>
 					
-					<div id="petina"><button  class="button1" onclick="calc()">&nbsp&nbsp&nbspKje iskati pomoč&nbsp&nbsp&nbsp</button></div>
+					<div id="petina"><button  class="button1" onclick="pomoc()">&nbsp&nbsp&nbspKje iskati pomoč&nbsp&nbsp&nbsp</button></div>
 					
 					<div id="petina"><button  class="button1" onclick="zanimivosti()">&nbsp&nbsp&nbsp&nbsp&nbspZanimivosti&nbsp&nbsp&nbsp&nbsp&nbsp</button></div>
 		
@@ -49,14 +49,14 @@
 								<div class="panel-heading">
 									<div class="row">
 										<div class="col-lg-8 col-md-8 col-sm-8"><b>Izberi</div>
-										<div class="col-lg-4 col-md-4 col-sm-4"><select class="form-control input-sm" id="preberiPredlogoBolnika"><option value=""></option><option value="Pujsa,Pepa,1938-10-30T14:58">Pujsa Pepa</option></select></div>
+										<div class="col-lg-4 col-md-4 col-sm-4"><select class="form-control input-sm" id="preberiPredlogoBolnika"><option value=""></option><option value="Margaret Hilda,Thatcher,1925-10-13T11:33">Margaret Hilda Thatcher</option><option value="Mali,Mum,1944-2-15T14:58">Mali Mum</option><option value="Ivan,the Terrible,1530-8-25T14:58">Ivan the Terrible</option></select></div>
 									</div>
 								</div>
 								<div class="panel-body">
 									<span class="label label-default">Ime</span><input id="kreirajIme" type="text" class="form-control input-mini" >
 									<span class="label label-default">Priimek</span><input id="kreirajPriimek" type="text" class="form-control" >
 									<span class="label label-default">Datum rojstva</span><input id="kreirajDatumRojstva" type="text" class="form-control" >
-									<span class="label label-default">EHR ID</span><input id="preberiEHRid" type="text" class="form-control input-mini" >
+									<span class="label label-default">EHR ID</span><input id="preberiEHRid" type="text" class="form-control input-mini" readonly>
 									<div class="PlacZagumb"><button type="button" class="gumb" onclick="kreirajEHRzaBolnika()" >Prijava</button></div>
 									
 									<div class="row1">
@@ -79,8 +79,17 @@
 									</div>
 								</div>
 								<div class="panel-body">
+									<span class="label label-default">Leto rojstva</span><input id="letoRojstva" type="text" class="form-control input-mini" >
 									<span class="label label-default">Začetek kajenja (starost)</span><input id="zacetek" type="text" class="form-control input-mini" >
 									<span class="label label-default">Povrečno število pokajenih cigaret (dnevno)</span><input id="povprecje" type="text" class="form-control" >
+									<span class="label label-default">Spol:</span>
+									<div class="radio">
+									<form>
+									<input type="radio" name="sex" value="male">moški
+									&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+									<input type="radio" name="sex" value="female">ženski
+									</form>
+									</div>
 									<span class="label label-default">Premori pri kajenju (v letih)</span><input id="premori" type="text" class="form-control">
 									<span class="label label-default">Izgubljena življenjska doba (v dneh)</span><input id="izgubljeniDnevi" type="text" class="form-control" readonly>
 									<div class="PlacZagumb"><button type="button" class="gumb" onclick="izracunaj()">Izračunaj</button></div>
@@ -93,33 +102,393 @@
 					</div>
 					
 					<div id="Zanimivosti" class="Zanimivosti">
-						<div class="col-lg-4 col-md-4 col-sm-4"></div>
-						<div class="col-lg-4 col-md-4 col-sm-4">
-							<div class="panel panel-default">
+						
+						<div id="prostor" class="col-lg-12 col-md-12 col-sm-12">
+						
+							<div id="graff" class="col-lg-5 col-md-5 col-sm-5">
+								<div id="plac3" class="col-lg-12 col-md-12 col-sm-12"></div>
 								
-							
+								
+								<script src="http://d3js.org/d3.v3.min.js"></script>
+								<script>
+
+								var margin = {top: 200, right: 350, bottom: 200, left: 50},
+									width = 960 - margin.left - margin.right,
+									height = 500 - margin.top - margin.bottom;
+
+								var x = d3.scale.linear()
+									.domain([0, 5.9])
+									.range([0, width]);
+
+								var y = d3.scale.linear()
+									.domain([-1, 1])
+									.range([height, 0]);
+
+								var z = d3.scale.linear()
+									.domain([0, 5.9])
+									.range([0, 360]);
+
+								var points = d3.range(0, 6, .1).map(function(t) {
+								  return {value: t, 0: x(t), 1: y(Math.sin(t))};
+								});
+
+								var svg = d3.select("#graff").append("svg")
+									.attr("width", width + margin.left + margin.right)
+									.attr("height", height + margin.top + margin.bottom)
+								  .append("g")
+									.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+								var path = svg.selectAll("path")
+									.data(quad(points))
+								  .enter().append("path")
+									.style("fill", function(d) { return d3.hsl(z(d[1].value), 1, .5); })
+									.style("stroke", "#000");
+
+								var t0 = Date.now();
+								d3.timer(function() {
+								  var dt = (Date.now() - t0) * .001;
+								  points.forEach(function(d) { d[1] = y(d.scale = Math.sin(d.value + dt)); });
+								  path.attr("d", function(d) { return lineJoin(d[0], d[1], d[2], d[3], 80 * d[1].scale * d[1].scale + 10); });
+								});
+
+								// Compute quads of adjacent points [p0, p1, p2, p3].
+								function quad(points) {
+								  return d3.range(points.length - 1).map(function(i) {
+									return [points[i - 1], points[i], points[i + 1], points[i + 2]];
+								  });
+								}
+
+								// Compute stroke outline for segment p12.
+								function lineJoin(p0, p1, p2, p3, width) {
+								  var u12 = perp(p1, p2),
+									  r = width / 2,
+									  a = [p1[0] + u12[0] * r, p1[1] + u12[1] * r],
+									  b = [p2[0] + u12[0] * r, p2[1] + u12[1] * r],
+									  c = [p2[0] - u12[0] * r, p2[1] - u12[1] * r],
+									  d = [p1[0] - u12[0] * r, p1[1] - u12[1] * r];
+
+								  if (p0) { // clip ad and dc using average of u01 and u12
+									var u01 = perp(p0, p1), e = [p1[0] + u01[0] + u12[0], p1[1] + u01[1] + u12[1]];
+									a = lineIntersect(p1, e, a, b);
+									d = lineIntersect(p1, e, d, c);
+								  }
+
+								  if (p3) { // clip ab and dc using average of u12 and u23
+									var u23 = perp(p2, p3), e = [p2[0] + u23[0] + u12[0], p2[1] + u23[1] + u12[1]];
+									b = lineIntersect(p2, e, a, b);
+									c = lineIntersect(p2, e, d, c);
+								  }
+
+								  return "M" + a + "L" + b + " " + c + " " + d + "Z";
+								}
+
+								// Compute intersection of two infinite lines ab and cd.
+								function lineIntersect(a, b, c, d) {
+								  var x1 = c[0], x3 = a[0], x21 = d[0] - x1, x43 = b[0] - x3,
+									  y1 = c[1], y3 = a[1], y21 = d[1] - y1, y43 = b[1] - y3,
+									  ua = (x43 * (y1 - y3) - y43 * (x1 - x3)) / (y43 * x21 - x43 * y21);
+								  return [x1 + ua * x21, y1 + ua * y21];
+								}
+
+								// Compute unit vector perpendicular to p01.
+								function perp(p0, p1) {
+								  var u01x = p0[1] - p1[1], u01y = p1[0] - p0[0],
+									  u01d = Math.sqrt(u01x * u01x + u01y * u01y);
+								  return [u01x / u01d, u01y / u01d];
+								}
+
+								</script>
 							</div>
-						</div>
+							
+							<div id="transbox" class="col-lg-6 col-md-6 col-sm-6">
+										<div id="naslovStolpca" class="col-lg-12 col-md-12 col-sm-12">
+											Lestvica držav glede pogostosti kajenja<b>
+										</div>
+										<div id="stolpec" class="col-lg-3 col-md-3 col-sm-3">				
+									<p>
+										
+										<ul style="list-style-type:none">
+											
+											<li>1	 Bulgaria	</li>
+											<li>2	 Serbia	</li>
+											<li>3	 Greece	</li>
+											<li>4	 Russia</li>
+											<li>5	 Moldova	</li>
+											<li>6	 Ukraine	</li>
+											<li>7	 Slovenia	</li>
+											<li>8	 Bosnia and Herzegovina	</li>
+											<li>9	 Belarus	</li>
+											<li>10	 Montenegro</li>
+											<li>11	 Lebanon	</li>
+											<li>12	 Czech Republic	</li>
+											<li>13	 South Korea	</li>
+											<li>14	 Republic of Macedonia	</li>
+											<li>15	 Kazakhstan	</li>
+											<li>16	 Azerbaijan	</li>
+											<li>17	 Japan	</li>
+											<li>18	 Kuwait	</li>
+											<li>19	 Spain	</li>
+											<li>20	 Switzerland	</li>
+											<li>21	 China	</li>
+											<li>22	 Austria	</li>
+											<li>23	 Tunisia	</li>
+											<li>24	 Croatia	</li>
+											<li>25	 Armenia	</li>
+											<li>26	 Cyprus	</li>
+											<li>27	 Poland	</li>
+											<li>28	 Estonia	</li>
+											<li>29	 Hungary	</li>
+											<li>30	 Italy	</li>
+											<li>31	 Belgium	</li>
+											<li>32	 Denmark	</li>
+											<li>33	 Romania	</li>
+											<li>34	 Slovakia	</li>
+											<li>35	 Turkey	</li>
+											<li>36	 Malta	</li>
+											<li>37	 Jordan	</li>
+											<li>38	 Cuba	</li>
+											<li>39	 Albania	</li>
+											<li>40	 Portugal	</li>
+											<li>41	 Trinidad and Tobago	</li>
+											<li>42	 Egypt	</li>
+											<li>43	 Indonesia	</li>
+											<li>44	 Tajikistan	</li>
+											<li>45	 Germany	</li>
+											<li>46	 Argentina	</li>										 
+										</ul>
+										</p>
+									</div>
+									<div id="stolpec" class="col-lg-3 col-md-3 col-sm-3">				
+									<p>
+										
+										<ul style="list-style-type:none">
+										<li>47	 Georgia	</li>
+										<li>48	 Monaco	</li>
+										<li>49	 Israel	</li>
+										<li>50	 Australia	</li>
+										<li>51	 United States	</li>
+										<li>52	 Syria	</li>
+										<li>53	 Ireland	</li>
+										<li>54	 Vietnam	</li>
+										<li>55	 Kyrgyzstan	</li>
+										<li>56	 Luxembourg	</li>
+										<li>57	 Iraq	</li>
+										<li>58	 Chile	</li>
+										<li>59	 France	</li>
+										<li>60	 Oman	</li>
+										<li>61	 Philippines	</li>
+										<li>62	 Libya	</li>
+										<li>63	 Canada</li>
+										<li>64	 Saudi Arabia	</li>
+										<li>65	 Lithuania	</li>
+										<li>66	 Netherlands	</li>
+										<li>68	 Latvia	</li>
+										<li>69	 Andorra	</li>
+										<li>70	 Algeria	</li>
+										<li>71	 Uruguay	</li>
+										<li>72	 Brunei	</li>
+										<li>73	 United Kingdom	</li>
+										<li>74	 Sweden	</li>
+										<li>75	 Finland	</li>
+										<li>76	 Papua New Guinea	</li>
+										<li>77	 Bahrain	</li>
+										<li>78	 Iran	</li>
+										<li>79	 North Korea	</li>
+										<li>80	 Nauru	</li>
+										<li>81	 Paraguay	</li>
+										<li>82	 United Arab Emirates	</li>
+										<li>83	 Comoros	</li>
+										<li>84	 New Zealand	</li>
+										<li>85	 Seychelles	</li>
+										<li>86	 Thailand	</li>
+										<li>87	 Mongolia	</li>
+										<li>88	 Singapore	</li>
+										<li>89	 Malaysia	</li>
+										<li>90	 Namibia	</li>
+										<li>91	 Norway	</li>
+										<li>92	 Fiji	</li>
+										</ul>
+											</p>
+									</div>
+									<div id="stolpec" class="col-lg-3 col-md-3 col-sm-3">				
+									<p>
+										
+										<ul style="list-style-type:none">
+										<li>93	 Costa Rica	</li>
+											<li>94	 Brazil	</li>
+										<li>	95	 Gabon	</li>
+										<li>	96	 Morocco	</li>
+										<li>	97	 Venezuela	</li>
+										<li>	98	 Iceland	</li>
+	<li>										99	 Pakistan	</li>
+		<li>									100	 South Africa	</li>
+			<li>								101	 Cambodia	</li>
+				<li>							102	 Uzbekistan	</li>
+				<li>							103	 Laos	</li>
+				<li>							104	   Nepal	</li>
+				<li>							105	 Angola	</li>
+				<li>							106	 Colombia	</li>
+				<li>							107	 Yemen	</li>
+				<li>							108	 Senegal	</li>
+				<li>							109	 Equatorial Guinea	</li>
+				<li>							110	 Nicaragua	</li>
+				<li>							111	 Antigua and Barbuda	</li>
+				<li>							112	 Mexico	</li>
+				<li>							113	 Belize	</li>
+				<li>							114	 Saint Vincent and the Grenadines	</li>
+				<li>							115	 Barbados	</li>
+				<li>							116	 Cape Verde	</li>
+				<li>							117	 Dominica	</li>
+				<li>							118	 Botswana	</li>
+					<li>						119	 Djibouti	</li>
+					<li>						120	 Togo	</li>
+					<li>						121	 Swaziland	</li>
+					<li>						122	 The Bahamas	</li>
+					<li>						123	 Saint Kitts and Nevis	</li>
+					<li>						124	 Jamaica	</li>
+					<li>						125	 Qatar	</li>
+					<li>						126	 Madagascar	</li>
+					<li>						127	 Saint Lucia	</li>
+					<li>						128	 Guatemala	</li>
+					<li>						129	 Dominican Republic	</li>
+					<li>						130	 Grenada	</li>
+					<li>						131	 Ecuador	</li>
+					<li>						132	 Honduras	</li>
+					<li>						133	 El Salvador	</li>
+					<li>						134	 Mozambique	</li>
+					<li>						135	 Panama	</li>
+					<li>						136	 Sri Lanka	</li>
+					<li>						137	 Myanmar	</li>
+					<li>						138	 Zimbabwe	</li>
+										</ul>
+										</p>
+									</div>
+									
+									<div id="stolpec" class="col-lg-3 col-md-3 col-sm-3">				
+									<p>
+										
+										<ul style="list-style-type:none">
+<li>										139	 Bolivia	</li>
+<li>											140	 Sierra Leone	</li>
+<li>											141	 Maldives	</li>
+<li>											142	 Bangladesh	</li>
+<li>											143	 Ivory Coast	</li>
+<li>											144	 Kenya	</li>
+<li>											145	 Burundi	</li>
+<li>											146	 Peru	</li>
+<li>											147	 Turkmenistan	</li>
+<li>											148	 Tanzania	</li>
+<li>											149	 Mali	</li>
+<li>											150	 Bhutan	</li>
+<li>											151	 Nigeria	</li>
+<li>											152	 Liberia	</li>
+<li>											153	 Burkina Faso	</li>
+<li>											154	 Democratic Republic of the Congo	</li>
+<li>											155	 Central African Republic	</li>
+<li>											156	 Haiti	</li>
+<li>											157	 Guinea-Bissau	</li>
+<li>											158	 India	</li>
+<li>											159	 Rwanda	</li>
+<li>											160	 Cameroon	</li>
+<li>											161	 Chad	</li>
+<li>											162	 Mauritania	</li>
+<li>											163	 Gambia	</li>
+<li>											164	 Sudan	</li>
+<li>											165	 Eritrea	</li>
+<li>											166	 Zambia	</li>
+<li>											167	 Benin	</li>
+<li>											168	 São Tomé and Príncipe	</li>
+<li>											169	 Somalia	</li>
+<li>											170	 Lesotho	</li>
+<li>											171	 Afghanistan	</li>
+<li>											172	 Suriname	</li>
+<li>											173	 Niger	</li>
+<li>											174	 Guyana	</li>
+<li>											175	 Malawi	</li>
+<li>											176	 Tonga	</li>
+<li>											177	 Ghana	</li>
+<li>											178	 Vanuatu	</li>
+<li>											179	 Ethiopia	</li>
+<li>											180	 Samoa	</li>
+<li>											181	 Tuvalu	</li>
+<li>											182	 Uganda	</li>
+<li>											183	 Kiribati	</li>
+<li>											184	 Solomon Islands	</li>
+<li>											185	 Guinea	</li>
+										</ul>
+										</p>
+									</div>
+									
+							</div>
+							</div>
 					</div>
 					
 					<div id="Pomoc" class="Pomoc">
-						<div class="col-lg-4 col-md-4 col-sm-4"></div>
-						<div class="col-lg-4 col-md-4 col-sm-4">
-							<div class="panel panel-default">
-								
-							
-							</div>
+						<div class="col-lg-12 col-md-12 col-sm-12">
+							<div class="col-lg-3 col-md-3 col-sm-3"></div>
+						<div id="besedilo" class="col-lg-6 col-md-6 col-sm-6">
+							Destinacije v vaši bližini, kjer Vam bodo pomagali pri vaši zasvojenosti s kajenjem
 						</div>
+						</div>
+						
+						
+						<div class="col-lg-3 col-md-3 col-sm-3"></div>
+						<div class="col-lg-6 col-md-6 col-sm-6">
+							 <div id="map-canvas">
+								<iframe src="https://www.google.com/maps/embed/v1/search?key=AIzaSyAQejp9TDz8ncjwusS8rT9ujGWhpIxsabk&q=odvajanje_kajenja&center=46.2060586,14.2085422&zoom=11" style="width:100%;height:100%;">
+								</iframe>
+								</div>
+						</div>
+						<div class="col-lg-3 col-md-3 col-sm-3"></div>
 					</div>
 					
 					<div id="Osnovno" class="Osnovno">
-						<div class="col-lg-4 col-md-4 col-sm-4"></div>
-						<div class="col-lg-4 col-md-4 col-sm-4">
-							<div class="panel panel-default">
-								
+						<div class="col-lg-12 col-md-12 col-sm-12">
 							
-							</div>
+								<div id="prijavljen" id="besedilo" class="col-lg-6 col-md-6 col-sm-6">									
+								</div>
 						</div>
+						
+						<div class="col-lg-6 col-md-6 col-sm-6">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<div class="row">
+										<div class="col-lg-8 col-md-8 col-sm-8"><b>Vnos</b> meritve <b>vitalnih znakov</b> bolnika</div>
+										
+									</div>
+								</div>				
+								<div class="panel-body">
+									<span class="label label-default">EHR ID</span><input id="dodajVitalnoEHR" type="text" class="form-control input-mini"  readonly>
+									<span class="label label-default">Datum in ura</span><input id="dodajVitalnoDatumInUra" type="text" class="form-control input-mini" >
+									<span class="label label-default">Telesna višina</span><div class="input-group"><input id="dodajVitalnoTelesnaVisina" type="text" class="form-control input-mini" ><span class="input-group-addon">cm</span></div>
+									<span class="label label-default">Telesna teža</span><div class="input-group"><input id="dodajVitalnoTelesnaTeza" type="text" class="form-control input-mini" ><span class="input-group-addon">kg</span></div>
+									<span class="label label-default">Telesna temperatura</span><div class="input-group"><input id="dodajVitalnoTelesnaTemperatura" type="text" class="form-control input-mini" ><span class="input-group-addon">°C</span></div>
+									<span class="label label-default">Sistolični krvni tlak</span><div class="input-group"><input id="dodajVitalnoKrvniTlakSistolicni" type="text" class="form-control input-mini" ><span class="input-group-addon">mm Hg</span></div>
+									<span class="label label-default">Diastolični krvni tlak</span><div class="input-group"><input id="dodajVitalnoKrvniTlakDiastolicni" type="text" class="form-control input-mini" ><span class="input-group-addon">mm Hg</span></div>
+									<span class="label label-default">Nasičenost krvi s kisikom</span><div class="input-group"><input id="dodajVitalnoNasicenostKrviSKisikom" type="text" class="form-control input-mini" ><span class="input-group-addon">%</span></div>
+									<span class="label label-default">Merilec</span><input id="dodajVitalnoMerilec" type="text" class="form-control input-mini" >
+									<button type="button" class="gumb" onclick="dodajMeritveVitalnihZnakov()">Dodaj meritve vitalnih znakov</button><span id="dodajMeritveVitalnihZnakovSporocilo"></span>
+								</div>
+							</div>
+						</div>	
+						
+						<div class="col-lg-6 col-md-6 col-sm-6">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="row">
+							<div class="col-lg-9 col-md-9 col-sm-9"><b>Pregled</b> meritev <b>vitalnih znakov</b> bolnika</div>
+							<div class="col-lg-3 col-md-3 col-sm-3"><select class="form-control input-sm" id="preberiTipZaVitalneZnake"><option value="telesna temperatura">telesna temperatura</option><option value="telesna temperatura AQL">telesna temperatura (filter na podhladitev)</option><option value="telesna teža">telesna teža</option></select></div>
+							
+						</div>
+					</div>				
+					<div class="panel-body">
+						<span class="label label-default">EHR ID</span><input id="meritveVitalnihZnakovEHRid" type="text" class="form-control input-mini"  readonly>
+						<button type="button" class="gumb" onclick="preberiMeritveVitalnihZnakov('telesna temperatura')">Preberi meritve vitalnih znakov</button><span id="preberiMeritveVitalnihZnakovSporocilo"></span>
+						<div id="rezultatMeritveVitalnihZnakov"></div>
+				  	</div>
+				</div>			
+			</div>
+						
 					</div>
 				
 			</div>

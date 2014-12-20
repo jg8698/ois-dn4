@@ -24,17 +24,40 @@ function enter() {
 function domov() {
     $("#Kalkulator").hide();
     $("#Zanimivosti").hide();
+	$("#Osnovno").hide();
+	$("#Pomoc").hide();
     $("#Domov").show();
+	
 }
 function calc() {
     $("#Zanimivosti").hide();
     $("#Domov").hide();
+	$("#Osnovno").hide();
+	$("#Pomoc").hide();
     $("#Kalkulator").show();
 }
 function zanimivosti() {
     $("#Kalkulator").hide();
     $("#Domov").hide();
+	$("#Osnovno").hide();
+	$("#Pomoc").hide();
     $("#Zanimivosti").show();
+}
+
+function pomoc() {
+    $("#Kalkulator").hide();
+    $("#Domov").hide();
+	$("#Osnovno").hide();
+	$("#Pomoc").show();
+    $("#Zanimivosti").hide();
+}
+
+function osnovno() {
+    $("#Kalkulator").hide();
+    $("#Domov").hide();
+	$("#Osnovno").show();
+	$("#Pomoc").hide();
+    $("#Zanimivosti").hide();
 }
 
 function izracunaj() {
@@ -54,12 +77,13 @@ function izracunaj() {
 	var	starostZacetka = $("#zacetek").val();
 	var pauze = $("#premori").val();
 	var naDan = $("#povprecje").val();
-	var rojstvo = $("#kreirajDatumRojstva").val();
+	var rojstvo = $("#letoRojstva").val();
 	
-	var steviloLetKajenja = 2014 - rojstvo - starostZacetka - pauze;
+	var steviloLetKajenja = 2015 - rojstvo - starostZacetka - pauze;
 	var steviloUseh = steviloLetKajenja * 365 * naDan;
 	var porabljeniDnevi = steviloUseh * 11 / 60/24;
-	$("#izgubljeniDnevi").val(porabljeniDnevi);
+	if(porabljeniDnevi < 0)  $("#izgubljeniDnevi").val(0);
+	else $("#izgubljeniDnevi").val(porabljeniDnevi);
 	$("#kadilnica").text("Opravljeno!");
 	return;
 }
@@ -111,9 +135,14 @@ function kreirajEHRzaBolnika() {
 		            data: JSON.stringify(partyData),
 		            success: function (party) {
 		                if (party.action == 'CREATE') {
-		                    $("#prijavnoMesto").text("Uspešno kreiran EHR '" + ehrId + "'.");
-		                    console.log("Uspešno kreiran EHR '" + ehrId + "'.");
+		                    $("#prijavljen").text("Prijavljeni ste kot "+ ime + " "+ priimek +" z EHRiD-jem: '" + ehrId + "'.");
+		                    $("#prijavnoMesto").text("Prijavljeni ste kot "+ ime + " "+ priimek);
+							$("#dodajVitalnoEHR").val(ehrId);
+							console.log("Uspešno kreiran EHR '" + ehrId + "'.");
 		                    $("#preberiEHRid").val(ehrId);
+							$("#meritveVitalnihZnakovEHRid").val(ehrId);
+							
+							osnovno();
 		                }
 		            },
 		            error: function(err) {
@@ -212,7 +241,7 @@ function dodajMeritveVitalnihZnakov() {
 function preberiMeritveVitalnihZnakov() {
 	sessionId = getSessionId();	
 
-	var ehrId = $("#meritveVitalnihZnakovEHRid").val();
+	var ehrId = $("#preberiEHRid").val();
 	var tip = $("#preberiTipZaVitalneZnake").val();
 
 	if (!ehrId || ehrId.trim().length == 0 || !tip || tip.trim().length == 0) {
@@ -238,6 +267,7 @@ function preberiMeritveVitalnihZnakov() {
 						        }
 						        results += "</table>";
 						        $("#rezultatMeritveVitalnihZnakov").append(results);
+								$("#preberiMeritveVitalnihZnakovSporocilo").html("<span class='obvestilo label label-warning fade-in'>Uspešno!</span>");
 					    	} else {
 					    		$("#preberiMeritveVitalnihZnakovSporocilo").html("<span class='obvestilo label label-warning fade-in'>Ni podatkov!</span>");
 					    	}
@@ -260,6 +290,7 @@ function preberiMeritveVitalnihZnakov() {
 						        }
 						        results += "</table>";
 						        $("#rezultatMeritveVitalnihZnakov").append(results);
+								$("#preberiMeritveVitalnihZnakovSporocilo").html("<span class='obvestilo label label-warning fade-in'>Uspešno!</span>");
 					    	} else {
 					    		$("#preberiMeritveVitalnihZnakovSporocilo").html("<span class='obvestilo label label-warning fade-in'>Ni podatkov!</span>");
 					    	}
