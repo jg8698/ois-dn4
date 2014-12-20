@@ -74,10 +74,13 @@ function izracunaj() {
 	}
 	*/
 	
+	
 	var	starostZacetka = $("#zacetek").val();
 	var pauze = $("#premori").val();
 	var naDan = $("#povprecje").val();
 	var rojstvo = $("#letoRojstva").val();
+	
+	
 	
 	var steviloLetKajenja = 2015 - rojstvo - starostZacetka - pauze;
 	var steviloUseh = steviloLetKajenja * 365 * naDan;
